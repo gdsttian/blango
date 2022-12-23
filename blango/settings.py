@@ -139,7 +139,6 @@ class Dev(Configuration):
 
     ADMINS = values.SingleNestedTupleValue((("Ben Shaw", "ben@example.com"), ("Leo Lucio", "leo@example.com")))
 
-
     LOGGING = {
         "version": 1,
         "disable_existing_loggers": False,
@@ -178,6 +177,14 @@ class Dev(Configuration):
             "level": "DEBUG",
         },
     }
+
+
+    PASSWORD_HASHERS = [
+        'django.contrib.auth.hashers.Argon2PasswordHasher',
+        'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+        'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+        'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
+    ]
 
 
 class Prod(Dev):
