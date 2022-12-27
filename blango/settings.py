@@ -63,6 +63,7 @@ class Dev(Configuration):
         'allauth.socialaccount.providers.google',
         'rest_framework',
         'rest_framework.authtoken',
+        'drf_yasg',
     ]
 
     CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
@@ -219,6 +220,13 @@ class Dev(Configuration):
         "DEFAULT_PERMISSION_CLASSES": [
             "rest_framework.permissions.IsAuthenticatedOrReadOnly"
         ],
+    }
+
+    SWAGGER_SETTINGS = {
+        "SECURITY_DEFINITIONS": {
+            "Token": {"type": "apiKey", "name": "Authorization", "in": "header"},
+            "Basic": {"type": "basic"},
+        }
     }
 
 
